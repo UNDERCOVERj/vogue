@@ -35,7 +35,7 @@
       <strong><a href="https://github.com/UNDERCOVERj/vogue" target="_blank">auther:UNDERCOVERj</a></strong>
       <ul class="bottom">
         <li v-for="item in items" class="items">
-          <h1><router-link to='/home/first'>{{item.title}}</router-link></h1>
+          <h1><router-link to='/home'>{{item.title}}</router-link></h1>
           <ul>
             <li v-for="content in item.contents" class="item"><router-link to='/home'>{{content}}</router-link></li>
           </ul>
