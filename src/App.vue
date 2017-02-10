@@ -32,7 +32,7 @@
       </transition>
     </section>
     <footer>
-      <strong><a href="https://github.com/UNDERCOVERj" target="_blank">auther:UNDERCOVERj</a></strong>
+      <strong><a href="https://github.com/UNDERCOVERj/vogue" target="_blank">auther:UNDERCOVERj</a></strong>
       <ul class="bottom">
         <li v-for="item in items" class="items">
           <h1><router-link to='/home/first'>{{item.title}}</router-link></h1>
