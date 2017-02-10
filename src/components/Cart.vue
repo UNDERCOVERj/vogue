@@ -66,7 +66,8 @@
 		},
 		computed:{
 			...mapGetters({
-				cart:'getCart'
+				cart:'getCart',
+				hw:'getHW'
 			}),
 			selectedSum(){
 				return this.cart.filter(function(e){
@@ -109,9 +110,6 @@
 				var a= parseInt(this.hw.h)-200
 				return a<389?389:a
 			},
-			...mapGetters({
-				hw:'getHW'
-			}),
 		},
 		methods:{
 			selectAll(){
@@ -153,7 +151,7 @@
 	}
 </script>
 <style>
-	table{margin:0 auto;min-height: 600px}
+	table{margin:0 auto;width: 1058px}
 	tbody tr{border:1px solid #00BC9B;display:block;margin: 20px 0}
 	tbody td{height: 100px;display: inline-block;padding-top: 20px}
 	th{text-align: left;display: inline-block;padding-top: 20px;font-size: 12px;height: 40px}

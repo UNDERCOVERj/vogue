@@ -113,7 +113,7 @@
 	.article_p span{color:#33cccc;}
 	.article_p a{color:#33cccc;}
 	.article_p a:hover{text-decoration:underline;}
-	.article_pic img{max-width: 662px;height: auto;border: none}
+	.article_pic img{width: 600px;height: auto;border: none}
 	.article_pic p{word-wrap: break-word;word-break: break-all;color: #111;line-height: 28px;font-size: 14px}
 	.article_pic strong{margin: 30px 0;display: block}
 	.article_right{width: 235px;float:right;}
