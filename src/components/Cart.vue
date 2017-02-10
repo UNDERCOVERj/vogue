@@ -1,13 +1,10 @@
 <template>
 	<div class="cart" >
-		<table :style="{minHeight:home_first_height+'px'}" v-if="cart.length" >
-			<thead>
+		<table :style="{height:home_first_height+'px'}" v-if="cart.length" ref="table">
+			<!-- 本来想用minHeight,可是火狐不兼容，这样写，高度变高会自动撑开 -->
+			<tbody>
 				<tr>
-					<th class="th_chk">
-						<div>
-							<input type="checkbox" @change="selectAll" id="selectAll" v-model="isAll"/><label for="selectAll">全选</label>
-						</div>
-					</th>
+					<th class="th_chk"><div><input type="checkbox" @change="selectAll" id="selectAll" v-model="isAll"/><label for="selectAll">全选</label></div></th>
 					<th class="th_item"></th>
 					<th class="th_info">商品信息</th>
 					<th class="th_price">单价</th>
@@ -15,8 +12,6 @@
 					<th class="th_sum">金额</th>
 					<th class="th_op">操作</th>
 				</tr>
-			</thead>
-			<tbody>
 				<tr v-for="(single,index) in cart">
 					<td class="td_chk"><input type="checkbox" v-model="single.completed" name="singlecheck"/></td>
 					<td class="td_item">
@@ -35,8 +30,7 @@
 							<span class="subtract" @click="changeNumSub(index)" :class="{disabled:single.num<=1}">-</span>
 							<input type="text" class="input_num" :value="single.num" disabled/>
 							<span class="add" @click="changeNumAdd(index)" :class="{disabled:single.num>=8}">+</span>
-						</div>
-						
+						</div>	
 					</td>
 					<td class="td_sum">￥{{parseFloat(single.num*single.price).toFixed(2)}}</td>
 					<td class="td_op"><span @click="remove(index)">删除</span></td>
@@ -61,7 +55,7 @@
 	export default {
 		data(){
 			return {
-				isSelectedAll:false
+				isSelectedAll:false,
 			}
 		},
 		computed:{
@@ -147,38 +141,40 @@
 					e.completed=false
 			});
 			this.$store.dispatch('changeShow','')
-		}
+		},
 	}
 </script>
 <style>
-	table{margin:0 auto;width: 1058px}
+	/*简直就是坑爹的table，火狐和chrome的thead不一样*/
+	table{margin:0 auto; padding-bottom: 60px;position: relative;}
+	tbody{width:1060px;display: block;margin:0;}
 	tbody tr{border:1px solid #00BC9B;display:block;margin: 20px 0}
-	tbody td{height: 100px;display: inline-block;padding-top: 20px}
-	th{text-align: left;display: inline-block;padding-top: 20px;font-size: 12px;height: 40px}
+	tbody tr:first-child{border: none;}
+	tbody td{height: 100px;display: inline-block;padding-top: 20px;}
+	th{text-align: left;display: inline-block;padding-top: 20px;font-size: 12px;height: 40px;}
 	label{font-size: 12px}
-	.td_chk{width: 45px;overflow: hidden;}
-	.td_chk input{display: inline-block;float: right;margin-right:15px;cursor: pointer;}
+	.td_chk{width: 80px;}
+	.td_chk input{display: inline-block;margin:0 10px;cursor: pointer;}
 	.td_item{width: 300px;overflow: hidden;}
 	.td_item img{width: 80px;height: 80px;}
 	.td_item p{display: inline-block;width: 186px;font-size: 12px;overflow: hidden;    text-overflow: ellipsis;    max-height: 36px;    color: #3c3c3c;;vertical-align: top;margin-left: 5px;cursor: pointer;}
 	.td_item p:hover{color:#00BC9B;text-decoration: underline;}
-	.td_info{width: 156px;padding-right: 20px;padding-left: 16px}
+	.td_info{width: 170px;}
 	.td_info p{color:#9c9c9c;font-size: 12px;}
-	.td_price,.td_sum{width: 120px;color: #3c3c3c;font-weight: 700; font-family: Verdana,Tahoma,arial;font-size: 12px;margin-left :10px}
+	.td_price,.td_sum{width: 120px;color: #3c3c3c;font-weight: 700; font-family: Verdana,Tahoma,arial;font-size: 12px;}
     .td_amount{width: 120px}
     .td_sum{color:#00BC9B;}
-    .td_op{width: 100px;padding-left: 15px}
+    .td_op{width: 120px;}
     .td_op span{cursor: pointer;font-size: 12px;}
     .td_op span:hover{color:#00BC9B;text-decoration: underline;}
-	.th_chk{position: relative;width: 45px}
-	.th_chk div{position: absolute;width: 80px;top:20px;padding-left: 17px}
-	.th_chk input{display: inline-block;margin-right: 15px;cursor: pointer;}
-	.th_item{width: 310px}
-	.th_info{width: 160px;padding-right: 20px;padding-left: 16px}
-	.th_price,.th_sum{width: 125px;margin-left :10px}
+	.th_chk{width: 80px;}
+	.th_chk input{display: inline-block;margin:0 10px;cursor: pointer;}
+	.th_item{width: 300px;}
+	.th_info{width: 170px;}
+	.th_price,.th_sum{width: 120px;}
 	.th_amount{width: 120px}
-	.th_op{width: 100px;padding-left: 15px}
-	.t_foot{border: 1px solid #00BC9B }
+	.th_op{width: 120px}
+	.t_foot{border: 1px solid #00BC9B ;position: absolute;bottom: 3px;width:1060px;}
 	.t_foot span{color:#00BC9B;}
 	.t_foot p{display: inline-block;margin-right: 20px;width: 100px;text-align: center}
 	.t_foot button{padding: 15px 30px;background:#00BC9B; border: none;cursor: pointer}

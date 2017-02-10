@@ -358,19 +358,170 @@ label{display: inline-block;color:#111;font-size: 16px;padding-right: 20px;line-
 .addToCart_layout{width: 150px;height: 50px;z-index: 10;top:20px;color:#fff; cursor: not-allowed;background: #ededed;text-align: center;line-height: 50px;border-radius: 5px;
 }
 
-table{margin:0 auto;width: 1058px
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	/*简直就是坑爹的table，火狐和chrome的thead不一样*/
+table{margin:0 auto; padding-bottom: 60px;position: relative;
+}
+tbody{width:1060px;display: block;margin:0;
 }
 tbody tr{border:1px solid #00BC9B;display:block;margin: 20px 0
 }
-tbody td{height: 100px;display: inline-block;padding-top: 20px
+tbody tr:first-child{border: none;
 }
-th{text-align: left;display: inline-block;padding-top: 20px;font-size: 12px;height: 40px
+tbody td{height: 100px;display: inline-block;padding-top: 20px;
+}
+th{text-align: left;display: inline-block;padding-top: 20px;font-size: 12px;height: 40px;
 }
 label{font-size: 12px
 }
-.td_chk{width: 45px;overflow: hidden;
+.td_chk{width: 80px;
 }
-.td_chk input{display: inline-block;float: right;margin-right:15px;cursor: pointer;
+.td_chk input{display: inline-block;margin:0 10px;cursor: pointer;
 }
 .td_item{width: 300px;overflow: hidden;
 }
@@ -380,39 +531,37 @@ label{font-size: 12px
 }
 .td_item p:hover{color:#00BC9B;text-decoration: underline;
 }
-.td_info{width: 156px;padding-right: 20px;padding-left: 16px
+.td_info{width: 170px;
 }
 .td_info p{color:#9c9c9c;font-size: 12px;
 }
-.td_price,.td_sum{width: 120px;color: #3c3c3c;font-weight: 700; font-family: Verdana,Tahoma,arial;font-size: 12px;margin-left :10px
+.td_price,.td_sum{width: 120px;color: #3c3c3c;font-weight: 700; font-family: Verdana,Tahoma,arial;font-size: 12px;
 }
 .td_amount{width: 120px
 }
 .td_sum{color:#00BC9B;
 }
-.td_op{width: 100px;padding-left: 15px
+.td_op{width: 120px;
 }
 .td_op span{cursor: pointer;font-size: 12px;
 }
 .td_op span:hover{color:#00BC9B;text-decoration: underline;
 }
-.th_chk{position: relative;width: 45px
+.th_chk{width: 80px;
 }
-.th_chk div{position: absolute;width: 80px;top:20px;padding-left: 17px
+.th_chk input{display: inline-block;margin:0 10px;cursor: pointer;
 }
-.th_chk input{display: inline-block;margin-right: 15px;cursor: pointer;
+.th_item{width: 300px;
 }
-.th_item{width: 310px
+.th_info{width: 170px;
 }
-.th_info{width: 160px;padding-right: 20px;padding-left: 16px
-}
-.th_price,.th_sum{width: 125px;margin-left :10px
+.th_price,.th_sum{width: 120px;
 }
 .th_amount{width: 120px
 }
-.th_op{width: 100px;padding-left: 15px
+.th_op{width: 120px
 }
-.t_foot{border: 1px solid #00BC9B
+.t_foot{border: 1px solid #00BC9B ;position: absolute;bottom: 3px;width:1060px;
 }
 .t_foot span{color:#00BC9B;
 }
@@ -450,4 +599,4 @@ label{font-size: 12px
 .login_button[data-v-8208290c]{display: block;font-size: 18px;color:#fff;background:#00BC9B;border: none;border-radius: 5px;outline: none;width: 300px;height: 43px;line-height: 43px;margin: 30px auto
 }
 
-/*# sourceMappingURL=app.09e57aa9f2e3789c824e0243d913aa7c.css.map*/
+/*# sourceMappingURL=app.cf3d8cf434a679c9acbdc42f5bd97b2a.css.map*/
