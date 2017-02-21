@@ -2,12 +2,12 @@
 * @Author: Administrator
 * @Date:   2017-01-27 14:37:09
 * @Last Modified by:   Administrator
-* @Last Modified time: 2017-02-08 19:08:28
+* @Last Modified time: 2017-02-21 21:06:02
 */
 .toLike{background: url('./images/isLike.png') -74px 0 no-repeat;}
   .noLike{background: url('./images/isLike.png') -1px 0 no-repeat;}
-  .left_btn{background:url("./images/btn_l.png") no-repeat center center;}
-   .right_btn{background:url("./images/btn_r.png") no-repeat center center;}
+.wrapper-prev{background:url("./images/btn_l.png") no-repeat center center;}
+.wrapper-next{background:url("./images/btn_r.png") no-repeat center center;}
    @font-face
 {
 font-family: Hyppolit;
