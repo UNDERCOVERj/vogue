@@ -135,29 +135,33 @@ import {mapGetters} from 'vuex'
     		
     		mounted(){
     			/*下面是判断过渡动画是否完成*/ 
-    			var node=this.$refs.wrapperContent
-    			var transitions = {
-			         'transition':'transitionend',
-			         'OTransition':'oTransitionEnd',
-			         'MozTransition':'transitionend',
-			         'WebkitTransition':'webkitTransitionEnd'
-     				}
-     				var self=this
+                var node=this.$refs.wrapperContent
+                var transitions = {
+                     'transition':'transitionend',
+                     'OTransition':'oTransitionEnd',
+                     'MozTransition':'transitionend',
+                     'WebkitTransition':'webkitTransitionEnd'
+                    }
+                    var self=this
  
-		       for(var t in transitions){
+               for(var t in transitions){
 
-		           if( node.style[t] !== undefined ){
-		               var transitionEvent=transitions[t];
-		           }
-		       }
-		       transitionEvent && node.addEventListener(transitionEvent, function() {
-   					self.clickdelay=false              
-   			   });
-    		   this.play()
+                   if( node.style[t] !== undefined ){
+                       var transitionEvent=transitions[t];
+                   }
+               }
+               transitionEvent && node.addEventListener(transitionEvent, function() {
+                    self.clickdelay=false              
+               });
+               this.play()
     		},
 		created(){
 			this.$store.dispatch('changeShow','home')
-		}
+            
+		},
+        destroyed(){
+            clearInterval(this.timer)
+        }
 	}
 </script>
 <style scoped>
