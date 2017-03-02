@@ -13,13 +13,13 @@
 						</p>
 					</div>
 					
-					<div class="layout" v-if="good.flag" @mouseout="changeFlagFalse(index)" @mouseover="changeFlagTrue(index)" @click="changeSelectedItem(index)">
+					<div class="layout" v-if="good.flag" @mouseout="changeFlagFalse(index,$event)" @click="changeSelectedItem(index)">
 						<router-link to="/shoppingitem" tag="div" class="link">
 						 	<p><img :src="'../static/images/like.png'" alt="like"/><span class="like_num">{{good.likes}}</span></p>
 							 <!-- 这里的：class绑定的背景图，对应css在islike.css中 -->
 						 </router-link>
 					</div>					
-					<div class="like" :class="good.isLike?'toLike':'noLike'" @click="changeLike(index)" v-if="good.flag" @mouseover="changeFlagTrue(index)"></div>				
+					<div class="like" :class="good.isLike?'toLike':'noLike'" @click="changeLike(index)" v-if="good.flag"></div>				
 			</li>
 		</ul>
 	</div>
@@ -44,12 +44,28 @@ import {mapGetters} from 'vuex'
 			changeFlagTrue(index){
 				this.$store.dispatch('changeFlagTrue',index)//改变是否显示喜欢
 			},
-			changeFlagFalse(index){
-				this.$store.dispatch('changeFlagFalse',index)//改变是否显示喜欢
+			changeFlagFalse(index,e){
+				var evt=this.getRelatedTarget(e)
+				if(evt.getAttribute('class')){
+					if(!(evt.getAttribute('class').indexOf('like')!=-1)){
+						this.$store.dispatch('changeFlagFalse',index)//改变是否显示喜欢
+					}	
+				}
 			},
 			changeSelectedItem(index){
 				this.$store.dispatch('changeSelectedItem',index)//改变进入商品
-			}
+			},
+			getRelatedTarget: function (event) {
+		        if (event.relatedTarget) {
+		            return event.relatedTarget;
+		        } else if (event.toElement) {
+		            return event.toElement;
+		        } else if (event.fromElement) {
+		            return event.fromElement;
+		        } else {
+		            return null;
+		        }
+    		}
 		}
 	}
 </script>

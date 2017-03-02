@@ -22,7 +22,6 @@ const router=new VueRouter({
 		children:[
 			{path:'',component:HomeFirst},
 			{path:':id',component:Brands}
-		
 		]	
 	},
 	{
@@ -48,6 +47,9 @@ const router=new VueRouter({
 	},
 	{
 		path:'/login',component:Login
+	},
+	{
+		path:'/*',redirect:'/home'
 	}]
 })
 

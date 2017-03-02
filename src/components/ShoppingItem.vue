@@ -31,43 +31,64 @@
 	</div>
 </template>
 <script type="text/javascript">
-import {mapGetters} from 'vuex'
 	export default {
-		data (){
-			return {
-
-			}
-		},
-		computed:{
-			...mapGetters({
-				item:'getSelectedItem'
-			}),
-			
-
-		},
 		methods:{
 			changeSize(index){
-				this.$store.dispatch('changeSize',index)
+				this.$store.dispatch('changeSize',index);
 			},
 			changeColor(num){
-				this.$store.dispatch('changeColor',num)
+				this.$store.dispatch('changeColor',num);
 			},
 			changeNumSub(){
 				if(this.item.num>1){
-					this.$store.dispatch('changeNumSub')
+					this.$store.dispatch('changeNumSub');
 				}
 				
 			},
 			changeNumAdd(){
 				if(this.item.num<8){
-					this.$store.dispatch('changeNumAdd')
+					this.$store.dispatch('changeNumAdd');
 				}
 			},
 			addToCart(){
 				if(!!this.item.color&&!!this.item.size){
-					this.$store.dispatch('addToCart')
+					this.$store.dispatch('addToCart');
 				}
+			},
+			//克隆对象
+		},
+		computed:{
+			item:function(){
+				var isEmptyObj=function(obj){
+					for(var name in obj){
+						return false
+					}
+					return true
+				};//判断对象是否委空
+				var clone = function(myObj){
+					if(typeof(myObj) != 'object') return myObj;
+					if(myObj == null) return myObj;
+					var myNewObj = new Object(); 
+					for(var i in myObj){
+						myNewObj[i] = clone(myObj[i]);
+					}  
+					return myNewObj;
+				};
+				var storageItem=clone(JSON.parse(sessionStorage.getItem('storageItem')));	
+				if(!isEmptyObj(this.$store.state.selectedItem)){
+					return this.$store.state.selectedItem//item改变也会改变state中的selectedItem
+				}else if(!isEmptyObj(storageItem)){
+					this.$store.state.selectedItem=clone(storageItem);//把session里的数据赋给state中的selectedItem
+					return this.$store.state.selectedItem
+				}else{
+					this.$store.state.selectedItem=clone(this.$store.state.goods[0]);
+					return this.$store.state.selectedItem
+				}
+				//不用clone是引用，一个改变另一个跟着改变
 			}
+		},
+		created(){
+			this.$store.dispatch('changeShow','shop');//此步改变导航栏
 		}
 	}
 </script>

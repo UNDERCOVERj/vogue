@@ -2,7 +2,7 @@
 * @Author: Administrator
 * @Date:   2017-01-23 12:30:55
 * @Last Modified by:   Administrator
-* @Last Modified time: 2017-02-08 19:36:30
+* @Last Modified time: 2017-03-02 20:00:52
 */
 
 import Vue from 'vue'
@@ -287,6 +287,7 @@ const state={
 		
 	],
 	selectedItem:{},
+	sessionSelectedItem:{},
 	cart:[]
 }
 const mutations={
@@ -315,7 +316,9 @@ const mutations={
 		state.goods[index].flag=false
 	},
 	CHANGE_SELECTED_ITEM(state,index){
-		state.selectedItem=mutations.clone(state.goods[index])
+		state.selectedItem=mutations.clone(state.goods[index]);
+		var temp=mutations.clone(state.selectedItem);
+		sessionStorage.setItem('storageItem',JSON.stringify(temp));
 	},
 	CHANGE_SIZE(state,index){
 		state.selectedItem.size=state.selectedItem.sizes[index]
@@ -464,7 +467,7 @@ const getters={
 	getGoods:function(state){
 		return state.goods
 	},
-	getSelectedItem:function(state){
+	getSelectedItem:function(state){		
 		return state.selectedItem
 	},
 	getCart:function(state){
