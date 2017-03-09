@@ -468,14 +468,6 @@ label{display: inline-block;color:#111;font-size: 16px;padding-right: 20px;line-
 
 
 
-
-
-
-
-
-
-
-
 	/*简直就是坑爹的table，火狐和chrome的thead不一样*/
 table{margin:0 auto; padding-bottom: 60px;position: relative;
 }
@@ -571,4 +563,4 @@ label{font-size: 12px
 .login_button[data-v-8208290c]{display: block;font-size: 18px;color:#fff;background:#00BC9B;border: none;border-radius: 5px;outline: none;width: 300px;height: 43px;line-height: 43px;margin: 30px auto
 }
 
-/*# sourceMappingURL=app.6abb707cf1299565411e7de15362ab7c.css.map*/
+/*# sourceMappingURL=app.75aa21303680d90b0a8e7cb9edf3255e.css.map*/

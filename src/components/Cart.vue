@@ -70,27 +70,19 @@
 			},
 			priceSum(){
 				//浮点数加法
-				var floatMul=function(m,n){
-					var _m=m.split('.');
-					var _n=n.split('.');
-					var sum1=parseInt(_m[0])+parseInt(_n[0]);
-					var sum2=parseInt(_m[1])+parseInt(_n[1]);
-					if(sum2.toString().length==1){
-						sum2='0'+sum2
-					}
-					if(sum2.length>2){
-						var sum2_arr=sum2.split('');
-						sum2=sum2_arr[1]+sum2_arr[2];
-						sum1=parseInt(sum2_arr[0])+sum1;
-					}
-					return sum1+'.'+sum2
+				var floatMul=function(m,n,sum){
+					var _m=m.split('.')
+					var _n=n.split('.')
+					var maxFloatNum=Math.max(parseInt(_m[1].length),parseInt(_n[1].length))
+					console.log(maxFloatNum)
+					var multiple=(parseFloat(m)*Math.pow(10,maxFloatNum)+parseFloat(n)*Math.pow(10,maxFloatNum))/Math.pow(10,maxFloatNum)
+					return multiple.toFixed(sum)
 				}
 				var sum='0.00';
-				
 				this.cart.filter(function(e){
 					return e.completed
 				}).forEach(function(n){
-					sum=floatMul(sum,parseFloat(n.num*n.price).toFixed(2))
+					sum=floatMul(sum,parseFloat(n.num*n.price).toFixed(2),2)
 				})
 				return sum
 			},

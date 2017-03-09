@@ -113,7 +113,8 @@ export default {
     }
   },
    created(){
-    var self=this;
+      var self=this;
+      var a=1
       window.onload=()=>{
         this.$store.dispatch('change_hw',{
           h:document.documentElement.clientHeight||document.body.clientHeight,
@@ -122,9 +123,10 @@ export default {
       }
       window.onresize=()=>{
         if(self.timer){
-          clearTimeout(self.timer)
+          clearTimeout(self.timer)//函数节流
         }
         self.timer=setTimeout(function(){
+      
           self.$store.dispatch('change_hw',{
             h:document.documentElement.clientHeight||document.body.clientHeight,
             w:document.documentElement.clientWidth||document.body.clientWidth
@@ -132,6 +134,7 @@ export default {
         },100)
       }
       window.onscroll=()=>{
+        
          var scrollTop = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
             if(scrollTop>10){
               this.scroll=true;
