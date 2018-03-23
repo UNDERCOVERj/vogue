@@ -20,21 +20,21 @@
  - 运行
 > npm run dev
 ## 二、目录结构
-![图片描述][https://segmentfault.com/img/bVI3Eq?w=209&h=652]
+![图片描述](https://segmentfault.com/img/bVI3Eq?w=209&h=652)
  - components中是所有页面组件
  - store中的index.js存放了vuex状态管理的东西，此处本应分成actions.js,mutations.js,getters.js的，可是我试了很多次没成功，还是将他们放在一个文件中，显得有点冗余了，这点失误了，会找原因的
  - static中存放了图片，图片是压缩了的，网站是https://tinypng.com/，还存放了字体，和一点css，css放在这里有一个原因就是，我想给某个元素设置background时，将style写在static里才行。
  - dist文件是后来npm run build后生成的，生成的dist中的index.html中的link都是没有加引号的，我自己加上才可以直接运行
-##三、项目开发##
+## 三、项目开发
 开发过程中，页面是一个一个写的，不过还是要先确定路由，路由嵌套
 ### main.js
 先说说路由吧，写在了main.js中，直接上图
-![图片描述][https://segmentfault.com/img/bVI3Hm?w=540&h=515]
+![图片描述](https://segmentfault.com/img/bVI3Hm?w=540&h=515)
 
 文章开头有首页，home的路径就是‘/home’，这里路由嵌套，用‘:id’来识别，Brands.vue组件在后文中会解释如何得到id，home页的八个导航，分别导向‘/home’,‘/news’，'/collections','/shop','/home/clot','/home/madness','/home/bape','/home/assc',购物车导向'/cart','login|register'导向‘/login’,'/newsarticle'是在news组件中导向的，‘/shoppingitem’是shop组件中导向的
 ### App.vue
-![图片描述][https://segmentfault.com/img/bVI3Io?w=719&h=628]
-![图片描述][https://segmentfault.com/img/bVI3Ip?w=551&h=114]
+![图片描述](https://segmentfault.com/img/bVI3Io?w=719&h=628)
+![图片描述](https://segmentfault.com/img/bVI3Ip?w=551&h=114)
 **v-for列表渲染的数据如left_navs和contents均来自state**
 **对象迭代**
     <div v-for="(value, key, index) in object">
@@ -125,7 +125,7 @@
 
 这里比较坑的地方就是document.documentElement.scrollTop和document.documentElement.scrollTop需要注意
 ### Home.vue
-![图片描述][https://segmentfault.com/img/bVI3JC?w=851&h=226]
+![图片描述](https://segmentfault.com/img/bVI3JC?w=851&h=226)
 这里给出了brands的样式，也就是说导航栏的home，clot，madness，bape，assc都有这个组件，
 ### HomeFirst.vue
 **2.21号修改**
@@ -278,7 +278,7 @@ export default {
 ```
 
 ### Shop.vue
-![图片描述][https://segmentfault.com/img/bVI3Ld?w=941&h=476]
+![图片描述](https://segmentfault.com/img/bVI3Ld?w=941&h=476)
     methods:{
     			changeLike(index){
     				this.$store.dispatch('changeLike',index)//改变是否喜欢
@@ -295,7 +295,7 @@ export default {
     		}
  每个商品被点击时都要改变进入的是哪个商品，changeSelectedItem来完成，这个页面想法来源于1626潮牌网，觉得挺好看的，于是自己写了下来，尤其是mouseover显示的是否喜欢，处理的还是可以，不过chrome和Firefox还是会有闪烁的效果没有处理好
 ### shoppingitem.vue
-![图片描述][https://segmentfault.com/img/bVI3LT?w=953&h=449]
+![图片描述](https://segmentfault.com/img/bVI3LT?w=953&h=449)
 这个组件中重要的就是数量的增减，因为每个商品都有一个对象存储数据，并且加入购物车还需要判断购物车中是否有相同信息的商品，还有点击加入购物车后直接跳转到购物车页面，方法如下
 
     methods:{
@@ -369,7 +369,7 @@ export default {
     	  return myNewObj;
     	},
 ### Brands.vue
-![图片描述][https://segmentfault.com/img/bVI3Nf?w=595&h=641]
+![图片描述](https://segmentfault.com/img/bVI3Nf?w=595&h=641)
 在created(){}中用this.$route.params.id来得到进入那个路由,因为这四个brand布局样式什么的大致都一样，然后watch来检测this.$route.params.id的改变，以此来getIntro也就是每个brand的数据
 
 **组件的介绍大致就是这些**
@@ -492,15 +492,4 @@ Action 可以包含任意异步操作。
  - Vuex2.0中文文档：http://router.vuejs.org/zh-cn/essentials/getting-started.html
  - git教程：http://www.liaoxuefeng.com/
 
-  [1]:https://undercoverj.github.io/vogue/dist/index.html
-  [2]: https://github.com/UNDERCOVERj/vogue
-  [3]: /img/bVI3GV
-  [4]: /img/bVI3Eq
-  [5]: /img/bVI3Hm
-  [6]: /img/bVI3Io
-  [7]: /img/bVI3Ip
-  [8]: /img/bVI3JC
-  [9]: /img/bVI3J7
-  [10]: /img/bVI3Ld
-  [11]: /img/bVI3LT
-  [12]: /img/bVI3Nf
+
